@@ -8,4 +8,16 @@ function updateCell(i, j) {
     }
 }
 
-export {arr, updateCell};
+function play() {
+    console.log('play');
+}
+
+function pause() {
+    console.log('pause');
+}
+
+function reset() {
+    console.log('reset');
+}
+
+export {arr, updateCell, play, pause, reset};
