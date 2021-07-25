@@ -1,4 +1,5 @@
 let arr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+let timer;
 
 function updateCell(i, j) {
     if (arr[i][j] === 0) {
@@ -9,15 +10,17 @@ function updateCell(i, j) {
 }
 
 function play() {
-    console.log('play');
+    timer = setInterval(() => {
+        console.log('hi');
+    }, 1000);
 }
 
 function pause() {
-    console.log('pause');
+    clearInterval(timer);
 }
 
 function reset() {
-    console.log('reset');
+    clearInterval(timer);
 }
 
 export {arr, updateCell, play, pause, reset};
