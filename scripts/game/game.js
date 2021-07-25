@@ -1,4 +1,5 @@
 let arr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+let flag = false;
 let timer;
 
 function updateCell(i, j) {
@@ -128,7 +129,7 @@ function buildWorld(matrix) {
 }
 
 function logic() {
-    while (true) {
+    while (flag) {
         arr = buildWorld(arr);
         const m = arr.length - 1;
         const matrix = [];
@@ -154,16 +155,19 @@ function logic() {
 }
 
 function play() {
+    flag = true;
     timer = setInterval(() => {
         logic();
     }, 1000);
 }
 
 function pause() {
+    flag = false;
     clearInterval(timer);
 }
 
 function reset() {
+    flag = false;
     clearInterval(timer);
 }
 
