@@ -1,4 +1,4 @@
-import {ALIVE, DEAD} from "../data/constant";
+import {ALIVE, DEAD} from "../data/constant.js";
 
 const container = document.getElementsByClassName("container")[0];
 
