@@ -1,3 +1,5 @@
+import {ALIVE, DEAD} from "../data/constant";
+
 const container = document.getElementsByClassName("container")[0];
 
 function drawBoard(arr) {
@@ -10,9 +12,9 @@ function drawBoard(arr) {
             const td = document.createElement("td");
 
             if (arr[i][j] ===  0) {
-                td.style.backgroundColor = "white";
+                td.style.backgroundColor = DEAD;
             } else if (arr[i][j] === 1) {
-                td.style.backgroundColor = "darkslategrey";
+                td.style.backgroundColor = ALIVE;
             }
 
             tr.appendChild(td);
