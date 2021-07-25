@@ -1,5 +1,4 @@
 import {drawBoard} from "./view/board.js";
-
-let arr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+import {arr} from "./game/game.js";
 
 drawBoard(arr);
