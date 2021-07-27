@@ -1,3 +1,5 @@
+import {drawBoard} from "../view/board.js";
+
 let arr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 let flag = false;
 let timer;
@@ -129,35 +131,34 @@ function buildWorld(matrix) {
 }
 
 function logic() {
-    while (flag) {
-        arr = buildWorld(arr);
-        const m = arr.length - 1;
-        const matrix = [];
+    arr = buildWorld(arr);
+    const m = arr.length - 1;
+    const matrix = [];
 
-        for (let i = 0; i <= m; ++i) {
-            const n = arr[i].length - 1;
-            const arr = [];
+    for (let i = 0; i <= m; ++i) {
+        const n = arr[i].length - 1;
+        const tempArr = [];
 
-            for (let j = 0; j <= n; ++j) {
-                const nc = liveNeighboursCount(arr, m, n, i, j);
+        for (let j = 0; j <= n; ++j) {
+            const nc = liveNeighboursCount(arr, m, n, i, j);
 
-                if (nc === 3) arr.push(1);
-                else if (nc < 2 || nc > 3) arr.push(0);
-                else arr.push(arr[i][j]);
-            }
-
-            matrix.push(arr);
+            if (nc === 3) tempArr.push(1);
+            else if (nc < 2 || nc > 3) tempArr.push(0);
+            else tempArr.push(arr[i][j]);
         }
 
-        arr = matrix;
-        console.log(arr);
+        matrix.push(tempArr);
     }
+
+    arr = matrix;
+    console.log(arr);
 }
 
 function play() {
     flag = true;
     timer = setInterval(() => {
         logic();
+        drawBoard(arr);
     }, 1000);
 }
 
