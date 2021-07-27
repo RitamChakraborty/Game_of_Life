@@ -1,17 +1,27 @@
 import {drawBoard} from "../view/board.js";
 
-const template = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
-let arr = template;
-let flag = false;
+function resetWorld() {
+    const template = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+
+    let matrix = [];
+
+    for (let i = 0; i < template.length; ++i) {
+        matrix.push(template[i]);
+    }
+
+    return matrix;
+}
+
+let arr = resetWorld();
 let timer;
 
 function updateCell(i, j) {
@@ -161,12 +171,9 @@ function logic() {
     }
 
     arr = matrix;
-    console.log(arr);
 }
 
 function play() {
-    flag = true;
-
     if (timer) {
         clearInterval(timer);
         timer = null;
@@ -179,14 +186,12 @@ function play() {
 }
 
 function pause() {
-    flag = false;
     clearInterval(timer);
 }
 
 function reset() {
-    flag = false;
     clearInterval(timer);
-    arr = template;
+    arr = resetWorld();
     drawBoard(arr);
 }
 
