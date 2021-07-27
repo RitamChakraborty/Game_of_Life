@@ -1,6 +1,16 @@
 import {drawBoard} from "../view/board.js";
 
-let arr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+const template = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+let arr = template;
 let flag = false;
 let timer;
 
@@ -156,6 +166,12 @@ function logic() {
 
 function play() {
     flag = true;
+
+    if (timer) {
+        clearInterval(timer);
+        timer = null;
+    }
+
     timer = setInterval(() => {
         logic();
         drawBoard(arr);
@@ -170,6 +186,8 @@ function pause() {
 function reset() {
     flag = false;
     clearInterval(timer);
+    arr = template;
+    drawBoard(arr);
 }
 
 export {arr, updateCell, play, pause, reset};
